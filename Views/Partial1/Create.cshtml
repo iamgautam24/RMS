@@ -1,0 +1,75 @@
+﻿@model WebApplication2.Models.Registration
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend></legend>
+
+        <div class="editor-label">
+            Firstname
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Firstname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Firstname, "", new { @class = "text-danger" })
+        </div>
+        <div class="editor-label">
+            Lastname
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Lastname, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="editor-label">
+            ContactNo
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ContactNo)
+            @Html.ValidationMessageFor(model => model.ContactNo)
+        </div>
+
+        <div class="editor-label">
+            EmailId
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EmailId)
+            @Html.ValidationMessageFor(model => model.EmailId)
+        </div>
+        <div class="editor-label">
+            Password
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <p>
+            <input type="button" value="Create" onclick="Save()" />
+        </p>
+    </fieldset>}
+<div>
+    @Html.ActionLink("Close", "Index")
+</div>
+
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/jquery-ui-1.10.4/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/jquery-ui-1.10.4/ui/minified/jquery-ui.min.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+    function Save() {
+        var FirstName = $("#FirstName").val();
+        var LastName = $("#LastName").val();
+        var Phone = $("#Phone").val();
+        var Email = $("#Email").val();
+        var Password = $("#Password").val();
+
+        var Register = {
+            "Firstname": Firstname, "Lastname": Lastname, "Phone": Phone,
+            "Email": Email, "Password": Password
+        };
+
+        $.post("/Registration/Create", Register,
+            function (data) { if (data == 0) { location = location.href; } }, 'json');
+    }</script>
