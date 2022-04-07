@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using WebApplication2.Models;
+using WebApplication2.ViewModel;
+
 
 namespace WebApplication2.Controllers
 {

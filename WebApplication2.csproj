@@ -154,6 +154,7 @@
     <Compile Include="Models\Registration.cs" />
     <Compile Include="Models\UsersRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\RoleReg.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
